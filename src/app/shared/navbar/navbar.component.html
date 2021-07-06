@@ -16,11 +16,11 @@
           <input #txtInput
                   class="form-control me-2"
                   type="search"
-                  placeholder="ID usuario">
+                  placeholder="ID usuario"
+                  (keyup.enter)="goToUser(txtInput.value)">
           <button type="button"
                   class="btn btn-outline-success"
-                  (click)="goToUser(txtInput.value)"
-                  (keyup.enter)="goToUser(txtInput.value)">Buscar</button>
+                  (click)="goToUser(txtInput.value)">Buscar</button>
         </div>
       </div>
     </div>

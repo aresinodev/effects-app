@@ -4,8 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '../models/user.model';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +12,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get(`${ this.url }/users`)
+  getUsers(): Observable<any> {
+    return this.http.get(`${ this.url }/users?delay=3`)
+    .pipe(
+      map((response: any) => response['data'])
+    );
+  }
+
+  getUser(id: string): Observable<any> {
+    return this.http.get(`${ this.url }/users/${ id }`)
     .pipe(
       map((response: any) => response['data'])
     );
